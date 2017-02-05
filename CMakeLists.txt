@@ -153,3 +153,10 @@ export(TARGETS libodb-sqlite
   ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-config.cmake
   NAMESPACE ${PROJECT_NAME}::
 )
+
+if(MSVC AND BUILD_SHARED_LIBS)
+  install(FILES
+    $<TARGET_PDB_FILE:${PROJECT_NAME}>
+    DESTINATION lib
+  )
+endif()
